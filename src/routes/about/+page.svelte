@@ -3,7 +3,7 @@
 </script>
 
 <div
-	class="mx-20 rounded-lg bg-white py-14 pl-16 pr-20 text-justify text-lg font-light shadow-md dark:bg-slate-800 dark:text-[#b5bbc4]"
+	class="tablet:mb-40 phone:-mx-12 phone:px-8 phone:mb-0 tablet:mx-10 laptop:mb-60 tablet:translate-y-20 tablet:scale-110 laptop:mx-20 tablet:px-12 laptop:pl-16 laptop:pr-20 laptop:py-14 rounded-lg bg-white text-justify text-lg font-light shadow-md dark:bg-slate-800 dark:text-[#b5bbc4]"
 >
 	<img src={photo} alt="boy" class="h-28 w-auto scale-90 rounded-full shadow-md" />
 	<br />

@@ -24,7 +24,9 @@
 	]);
 </script>
 
-<div class="text-lightgray mx-52 flex flex-wrap items-center justify-center gap-6 md:gap-8">
+<div
+	class="text-lightgray laptop:mx-52 tablet:mx-40 flex flex-wrap items-center justify-center gap-6 md:gap-8"
+>
 	{#each images as image, id}
 		<Skill {image} {id} />
 	{/each}

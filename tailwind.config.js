@@ -29,6 +29,16 @@ export default {
 					900: '#A5371B'
 				}
 			}
+		},
+		screens: {
+			phone: '100px',
+			// => @media (min-width: 1280px) { ... }
+
+			tablet: '640px',
+			// => @media (min-width: 640px) { ... }
+
+			laptop: '1150px'
+			// => @media (min-width: 1024px) { ... }
 		}
 	},
 
