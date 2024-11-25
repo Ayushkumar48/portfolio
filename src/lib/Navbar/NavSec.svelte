@@ -4,12 +4,11 @@
 	import Dropdown from './Dropdown.svelte';
 
 	let currentPath = $state(0);
-	let width = $state(0);
+	let width = $state(800);
 	let list = ['home', 'about', 'skills', 'projects'];
 	$effect(() => {
 		currentPath = $page.url.pathname;
 		width = window.innerWidth;
-		console.log(width);
 	});
 
 	function navigateTo(item) {
@@ -18,7 +17,9 @@
 	}
 </script>
 
-{#if width >= 640}
+{#if width < 640}
+	<Dropdown />
+{:else}
 	<div
 		class="fixed left-1/2 z-[20] flex w-[21rem] -translate-x-1/2 flex-row items-center justify-evenly rounded-3xl bg-slate-400 py-1 shadow-lg dark:bg-slate-600"
 	>
@@ -33,6 +34,4 @@
 			</button>
 		{/each}
 	</div>
-{:else}
-	<Dropdown />
 {/if}

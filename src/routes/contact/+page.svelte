@@ -2,6 +2,7 @@
 	import { enhance } from '$app/forms';
 	import { Button } from 'flowbite-svelte';
 	import { toast } from 'svelte-sonner';
+	import { Input, Textarea } from 'flowbite-svelte';
 	let { form } = $props();
 	$effect(() => {
 		if (form?.success === true) {
@@ -14,39 +15,41 @@
 
 <div class="flex items-center justify-center">
 	<form class="flex w-[35rem] flex-col gap-6" method="POST" use:enhance>
-		<div class="w-full">
+		<div class="flex w-full flex-col gap-1">
 			<label for="name">Name:</label>
-			<input
+			<Input
 				type="text"
 				class="w-full rounded-xl phone:dark:bg-slate-700 phone:dark:placeholder-opacity-[0.5]"
 				name="name"
+				id="name"
 				placeholder="name"
 				required
 			/>
 		</div>
-		<div class="w-full">
+		<div class="flex w-full flex-col gap-1">
 			<label for="email">Email:</label>
-			<input
+			<Input
 				type="email"
 				class="w-full rounded-xl phone:dark:bg-slate-700 phone:dark:placeholder-opacity-[0.5]"
 				name="email"
+				id="email"
 				placeholder="email"
 				required
 			/>
 		</div>
-		<div class="w-full">
+		<div class="flex w-full flex-col gap-1">
 			<label for="message">Message:</label>
-			<textarea
+			<Textarea
 				name="message"
 				class="w-full rounded-xl phone:dark:bg-slate-700 phone:dark:placeholder-opacity-[0.5]"
 				id="message"
 				rows="4"
 				placeholder="type your message..."
 				required
-			></textarea>
+			></Textarea>
 		</div>
 		<div class="flex justify-center">
-			<Button color="purple" type="submit">Submit</Button>
+			<Button color="purple" type="submit" class="duration-150">Submit</Button>
 		</div>
 	</form>
 </div>

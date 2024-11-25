@@ -1,33 +1,12 @@
 <script>
 	import Skill from '$lib/skills/Skill.svelte';
-	let images = $state([
-		'c++.png',
-		'javaScript.png',
-		'svelteKit.png',
-		'goLang.svg',
-		'python.png',
-		'nodeJS.png',
-		'expressJS.svg',
-		'git.png',
-		'sql.png',
-		'mongoDB.png',
-		'restAPI.svg',
-		'ubuntu.svg',
-		'tailwind.png',
-		'flowbite.png',
-		'shadcn.svg',
-		'aWS.svg',
-		'azure.svg',
-		'cN.svg',
-		'dSA.svg',
-		'oOPS.svg'
-	]);
+	let { data } = $props();
 </script>
 
 <div
-	class="text-lightgray laptop:mx-52 tablet:mx-40 flex flex-wrap items-center justify-center gap-6 md:gap-8"
+	class="text-lightgray md:gap-8 flex flex-wrap items-center justify-center gap-6 tablet:mx-40 laptop:mx-52"
 >
-	{#each images as image, id}
-		<Skill {image} {id} />
+	{#each data.skills as image}
+		<Skill {image} />
 	{/each}
 </div>
