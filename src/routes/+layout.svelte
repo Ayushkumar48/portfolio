@@ -10,7 +10,7 @@
 	<div class="phone:px-2 phone:py-1 tablet:px-12 tablet:py-8">
 		{@render children()}
 	</div>
-	<div class="w-full pb-4 text-center opacity-50">@2024 Ayush Kumar</div>
+	<div class="mt-20 w-full pb-4 text-center opacity-50">@2024 Ayush Kumar</div>
 </div>
 
 <Toaster richColors />
