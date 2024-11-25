@@ -11,8 +11,8 @@
 <div
 	class="flex h-full w-full flex-col items-center justify-center phone:mb-20 phone:mt-4 phone:gap-8 tablet:my-0 tablet:mb-0"
 >
-	{#if width >= 640}
-		<div class="flex h-full w-full flex-col items-center justify-center gap-20">
+	{#if width < 640}
+		<div class="flex h-full w-full flex-col items-center justify-center">
 			{#each data.data as img}
 				<Project {img} />
 			{/each}
