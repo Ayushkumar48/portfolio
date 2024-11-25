@@ -18,7 +18,7 @@
 			<label for="name">Name:</label>
 			<input
 				type="text"
-				class="w-full rounded-xl phone:dark:bg-slate-700 phone:dark:placeholder-gray-50 phone:dark:placeholder-opacity-[0.5]"
+				class="w-full rounded-xl phone:dark:bg-slate-700 phone:dark:placeholder-opacity-[0.5]"
 				name="name"
 				placeholder="name"
 				required
@@ -28,7 +28,7 @@
 			<label for="email">Email:</label>
 			<input
 				type="email"
-				class="w-full rounded-xl phone:dark:bg-slate-700 phone:dark:placeholder-gray-50 phone:dark:placeholder-opacity-[0.5]"
+				class="w-full rounded-xl phone:dark:bg-slate-700 phone:dark:placeholder-opacity-[0.5]"
 				name="email"
 				placeholder="email"
 				required
@@ -38,7 +38,7 @@
 			<label for="message">Message:</label>
 			<textarea
 				name="message"
-				class="w-full rounded-xl phone:dark:bg-slate-700 phone:dark:placeholder-gray-50 phone:dark:placeholder-opacity-[0.5]"
+				class="w-full rounded-xl phone:dark:bg-slate-700 phone:dark:placeholder-opacity-[0.5]"
 				id="message"
 				rows="4"
 				placeholder="type your message..."

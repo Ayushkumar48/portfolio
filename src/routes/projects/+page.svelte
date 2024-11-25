@@ -4,9 +4,7 @@
 </script>
 
 <div class="flex w-full flex-col items-center justify-center phone:gap-8">
-	<div
-		class="flex flex-wrap justify-between phone:-mt-20 tablet:mt-0 laptop:-mt-12 laptop:scale-90"
-	>
+	<div class="flex flex-wrap justify-between laptop:-mt-12 laptop:scale-90">
 		{#each data.data as img}
 			<Project {img} />
 		{/each}
