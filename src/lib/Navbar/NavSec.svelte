@@ -5,6 +5,7 @@
 
 	let currentPath = $state(0);
 	let width = $state(0);
+
 	let list = ['home', 'about', 'skills', 'projects'];
 	$effect(() => {
 		currentPath = $page.url.pathname;
