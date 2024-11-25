@@ -1,9 +1,11 @@
 <script>
 	import { ArrowRightOutline } from 'flowbite-svelte-icons';
 	import { quintInOut } from 'svelte/easing';
+	import { page } from '$app/stores';
 	import { fade } from 'svelte/transition';
 	let { img } = $props();
 	let hovered = $state(false);
+
 	function starthover() {
 		hovered = true;
 	}
@@ -14,7 +16,9 @@
 
 <!-- svelte-ignore a11y_no_static_element_interactions -->
 <!-- svelte-ignore a11y_mouse_events_have_key_events -->
-<div class="flex w-1/2 items-center justify-center phone:p-3 tablet:p-8">
+<div
+	class="flex items-center justify-center phone:h-auto phone:w-full phone:scale-[0.9] phone:p-3 tablet:w-1/2 tablet:scale-100 tablet:p-8"
+>
 	<a
 		href={img.url}
 		target="_blank"
