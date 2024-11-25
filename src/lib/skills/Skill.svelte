@@ -4,7 +4,7 @@
 	let { image, id } = $props();
 </script>
 
-<Popover class="text-md font-light dark:bg-slate-900" triggeredBy={`#a${id}`}>
+<Popover class="text-md font-light phone:dark:bg-slate-900" triggeredBy={`#a${id}`}>
 	{image.name}
 </Popover>
 <span
