@@ -4,7 +4,7 @@
 	import Dropdown from './Dropdown.svelte';
 
 	let currentPath = $state(0);
-	let width = $state(800);
+	let width = $state(0);
 	let list = ['home', 'about', 'skills', 'projects'];
 	$effect(() => {
 		currentPath = $page.url.pathname;

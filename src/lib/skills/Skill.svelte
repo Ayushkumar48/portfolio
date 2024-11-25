@@ -1,15 +1,15 @@
 <script>
-	import { Popover, Button, A } from 'flowbite-svelte';
+	import { Popover } from 'flowbite-svelte';
 
-	let { image } = $props();
+	let { image, id } = $props();
 </script>
 
-<Popover class="text-md font-light dark:bg-slate-900" triggeredBy={`#a${image.id}`}>
+<Popover class="text-md font-light dark:bg-slate-900" triggeredBy={`#a${id}`}>
 	{image.name}
 </Popover>
 <span
 	class="flex select-none items-center justify-center rounded-full transition-transform duration-200 ease-in-out"
-	id={`a${image.id}`}
+	id={`a${id}`}
 >
 	<img
 		src={image.src}

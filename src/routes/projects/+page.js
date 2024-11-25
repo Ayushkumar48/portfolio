@@ -6,14 +6,14 @@ export async function load() {
 			url: 'https://cma-tau.vercel.app/'
 		},
 		{
-			name: 'PokeDen',
-			alt: 'pokeden',
-			url: 'https://pokeden.vercel.app/'
-		},
-		{
 			name: 'Torbin Tech Store',
 			alt: 'torbin',
 			url: 'https://torbin.vercel.app/'
+		},
+		{
+			name: 'PokeDen',
+			alt: 'pokeden',
+			url: 'https://pokeden.vercel.app/'
 		},
 		{
 			name: 'Tic Tac Toe',
