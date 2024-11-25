@@ -4,7 +4,6 @@
 	let { data } = $props();
 	let width = $state(0);
 	$effect(() => {
-		currentPath = $page.url.pathname;
 		width = window.innerWidth;
 	});
 </script>
