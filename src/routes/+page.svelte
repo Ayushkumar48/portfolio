@@ -12,9 +12,11 @@
 </script>
 
 <div
-	class="phone:scale-[0.7] tablet:scale-[0.85] laptop:scale-100 phone:-translate-y-[22rem] tablet:-translate-y-20 laptop:translate-y-0 phone:-mb-[35rem] tablet:-mb-10 laptop:mb-32 mt-20 flex flex-col items-center justify-center gap-6"
+	class="mt-20 flex flex-col items-center justify-center gap-6 phone:-mb-[35rem] phone:-translate-y-[22rem] phone:scale-[0.6] tablet:-mb-10 tablet:-translate-y-20 tablet:scale-[0.85] laptop:mb-32 laptop:translate-y-0 laptop:scale-100"
 >
-	<div class="phone:flex-col tablet:flex-row laptop:flex-row flex gap-6">
+	<div
+		class="flex gap-6 phone:-translate-y-40 phone:flex-col tablet:translate-y-0 tablet:flex-col laptop:flex-row"
+	>
 		<div class="flex flex-col gap-6">
 			<ReHorizontalAbout />
 			<div class="flex flex-row gap-6">

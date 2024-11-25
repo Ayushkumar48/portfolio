@@ -18,7 +18,7 @@
 	}
 </script>
 
-{#if width > 640}
+{#if width >= 640}
 	<div
 		class="fixed left-1/2 z-[20] flex w-[21rem] -translate-x-1/2 flex-row items-center justify-evenly rounded-3xl bg-slate-400 py-1 shadow-lg dark:bg-slate-600"
 	>

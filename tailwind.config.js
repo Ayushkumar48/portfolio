@@ -32,13 +32,13 @@ export default {
 		},
 		screens: {
 			phone: '100px',
-			// => @media (min-width: 1280px) { ... }
+			// => @media (min-width: 100px) { ... }
 
 			tablet: '640px',
 			// => @media (min-width: 640px) { ... }
 
 			laptop: '1150px'
-			// => @media (min-width: 1024px) { ... }
+			// => @media (min-width: 1150px) { ... }
 		}
 	},
 

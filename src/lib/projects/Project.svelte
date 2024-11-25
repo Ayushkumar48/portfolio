@@ -14,7 +14,7 @@
 
 <!-- svelte-ignore a11y_no_static_element_interactions -->
 <!-- svelte-ignore a11y_mouse_events_have_key_events -->
-<div class="flex w-1/2 items-center justify-center p-8">
+<div class="flex w-1/2 items-center justify-center phone:p-3 tablet:p-8">
 	<a
 		href={img.url}
 		target="_blank"
