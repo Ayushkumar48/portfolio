@@ -1,6 +1,11 @@
 export async function load() {
 	const data = [
 		{
+			name: 'inRetro',
+			alt: 'inretro',
+			url: 'https://inretro.vercel.app/'
+		},
+		{
 			name: 'CMA',
 			alt: 'cma',
 			url: 'https://cma-tau.vercel.app/'
@@ -24,16 +29,6 @@ export async function load() {
 			name: 'Big Trivia',
 			alt: 'bigtrivia',
 			url: 'https://bigtrivia.vercel.app/'
-		},
-		{
-			name: 'BattleShip',
-			alt: 'battleship',
-			url: 'https://battleshipthegame.vercel.app/'
-		},
-		{
-			name: 'Poll Trunk',
-			alt: 'polltrunk',
-			url: 'https://polltrunk.vercel.app/'
 		}
 	];
 
