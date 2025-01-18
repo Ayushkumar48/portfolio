@@ -4,6 +4,8 @@
 		{ src: '/skill-icons/c++.png', name: 'C++' },
 		{ src: '/skill-icons/javascript.png', name: 'JavaScript' },
 		{ src: '/skill-icons/sveltekit.png', name: 'SvelteKit' },
+		{ src: '/skill-icons/react.svg', name: 'React.js' },
+		{ src: '/skill-icons/next.svg', name: 'Next.js' },
 		{ src: '/skill-icons/golang.svg', name: 'GoLang' },
 		{ src: '/skill-icons/python.png', name: 'Python' },
 		{ src: '/skill-icons/nodejs.png', name: 'NodeJS' },
