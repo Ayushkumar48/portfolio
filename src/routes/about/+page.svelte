@@ -2,6 +2,10 @@
 	import photo from '$lib/assets/minecraftboy.webp';
 </script>
 
+<svelte:head>
+	<title>Ayush Kumar - About Me</title>
+</svelte:head>
+
 <div
 	class="rounded-lg text-justify text-lg font-light shadow-md phone:-mx-12 phone:-mt-20 phone:mb-0 phone:scale-[0.8] phone:bg-white phone:px-8 phone:py-10 tablet:mx-10 tablet:mb-40 tablet:mt-0 tablet:translate-y-20 tablet:scale-110 tablet:px-12 laptop:mx-20 laptop:mb-60 laptop:py-14 laptop:pl-16 laptop:pr-20 dark:text-[#b5bbc4] phone:dark:bg-slate-800"
 >

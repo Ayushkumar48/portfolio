@@ -17,8 +17,9 @@
 		{ src: '/skill-icons/ubuntu.svg', name: 'Ubuntu' },
 		{ src: '/skill-icons/docker.svg', name: 'Docker' },
 		{ src: '/skill-icons/tailwind.png', name: 'Tailwind CSS' },
-		{ src: '/skill-icons/flowbite.png', name: 'Flowbite' },
+		{ src: '/skill-icons/materialui.svg', name: 'Material UI' },
 		{ src: '/skill-icons/shadcn.svg', name: 'ShadCN' },
+		{ src: '/skill-icons/flowbite.png', name: 'Flowbite' },
 		{ src: '/skill-icons/restapi.svg', name: 'REST API' },
 		{ src: '/skill-icons/aws.svg', name: 'AWS' },
 		{ src: '/skill-icons/azure.svg', name: 'Azure' },
@@ -27,6 +28,10 @@
 		{ src: '/skill-icons/oops.svg', name: 'OOPS' }
 	];
 </script>
+
+<svelte:head>
+	<title>Ayush Kumar - Skills</title>
+</svelte:head>
 
 <div
 	class="text-lightgray md:gap-8 flex flex-wrap items-center justify-center gap-6 tablet:mx-40 laptop:mx-52"

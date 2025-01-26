@@ -13,6 +13,9 @@
 	});
 </script>
 
+<svelte:head>
+	<title>Ayush Kumar - Contact</title>
+</svelte:head>
 <div class="flex items-center justify-center">
 	<form class="flex w-[35rem] flex-col gap-6" method="POST" use:enhance>
 		<div class="flex w-full flex-col gap-1">

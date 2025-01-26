@@ -25,7 +25,7 @@
 	onmouseleave={removeClass}
 >
 	<a
-		href="https://drive.google.com/file/d/1Y5vGRtIV3tcg_Du1T9EsmcYmba-ru-AP/view?usp=drive_link"
+		href="https://drive.google.com/file/d/10B29Tq-Gf_5Ej-2TcxVmraOn7DGNZmrH/view?usp=sharing"
 		target="_blank"
 	>
 		<img src={rightarrow} alt="rightarrow" class={css} />

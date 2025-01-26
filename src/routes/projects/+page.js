@@ -1,14 +1,9 @@
 export async function load() {
 	const data = [
 		{
-			name: 'inRetro',
-			alt: 'inretro',
-			url: 'https://inretro.vercel.app/'
-		},
-		{
-			name: 'CMA',
-			alt: 'cma',
-			url: 'https://cma-tau.vercel.app/'
+			name: 'The Movie Database - Clone',
+			alt: 'tmdb-clone',
+			url: 'https://tmdb-cloned.vercel.app/'
 		},
 		{
 			name: 'Torbin Tech Store',
@@ -16,19 +11,24 @@ export async function load() {
 			url: 'https://torbin.vercel.app/'
 		},
 		{
+			name: 'inRetro',
+			alt: 'inretro',
+			url: 'https://inretro.vercel.app/'
+		},
+		{
 			name: 'PokeDen',
 			alt: 'pokeden',
 			url: 'https://pokeden.vercel.app/'
 		},
 		{
+			name: 'CMA',
+			alt: 'cma',
+			url: 'https://cma-tau.vercel.app/'
+		},
+		{
 			name: 'Tic Tac Toe',
 			alt: 'tictactoe',
 			url: 'https://xotictactoe.vercel.app/'
-		},
-		{
-			name: 'Big Trivia',
-			alt: 'bigtrivia',
-			url: 'https://bigtrivia.vercel.app/'
 		}
 	];
 

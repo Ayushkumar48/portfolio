@@ -11,6 +11,14 @@
 	import SqLinkedin from '$lib/cards/SqLinkedin.svelte';
 </script>
 
+<svelte:head>
+	<title>Ayush Kumar</title>
+	<meta
+		name="description"
+		content="This portfolio is designed by Ayush Kumar showcasing his software development skills."
+	/>
+</svelte:head>
+
 <div
 	class="mt-20 flex flex-col items-center justify-center gap-6 phone:-mb-[35rem] phone:-translate-y-[22rem] phone:scale-[0.6] tablet:-mb-10 tablet:-translate-y-20 tablet:scale-[0.85] laptop:mb-32 laptop:translate-y-0 laptop:scale-100"
 >

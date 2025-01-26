@@ -8,6 +8,9 @@
 	});
 </script>
 
+<svelte:head>
+	<title>Ayush Kumar - Projects</title>
+</svelte:head>
 <div
 	class="flex h-full w-full flex-col items-center justify-center phone:mb-20 phone:mt-4 phone:gap-8 tablet:my-0 tablet:mb-0"
 >

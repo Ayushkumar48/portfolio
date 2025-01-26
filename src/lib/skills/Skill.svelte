@@ -15,6 +15,6 @@
 		src={image.src}
 		alt={image.name.toLowerCase()}
 		draggable="false"
-		class={`mt-1 h-auto w-20 rounded-full bg-slate-300 p-4 shadow-md duration-200 hover:scale-110 dark:bg-slate-600 ${image.name === "React.js"? "scale-90":""}`}
+		class="mt-1 h-20 w-20 rounded-full bg-slate-300 p-4 shadow-md duration-200 hover:scale-110 dark:bg-slate-600"
 	/>
 </span>
