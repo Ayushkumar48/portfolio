@@ -2,7 +2,7 @@
 	import HomeIcon from '@lucide/svelte/icons/home';
 	import BriefcaseIcon from '@lucide/svelte/icons/briefcase';
 	import SparklesIcon from '@lucide/svelte/icons/sparkles';
-	import AwardIcon from '@lucide/svelte/icons/award';
+	import CodeIcon from '@lucide/svelte/icons/code';
 	import MailIcon from '@lucide/svelte/icons/mail';
 	import DarkModeToggler from './dark-mode-toggler.svelte';
 	import { cn } from '$lib/utils';
@@ -29,9 +29,9 @@
 			class: 'bg-muted text-muted-foreground'
 		},
 		{
-			name: 'Experience',
-			href: '/experience',
-			icon: AwardIcon,
+			name: 'Projects',
+			href: '/projects',
+			icon: CodeIcon,
 			class: 'bg-secondary text-secondary-foreground'
 		},
 		{
