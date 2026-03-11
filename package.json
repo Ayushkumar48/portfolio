@@ -45,7 +45,12 @@
 		"vite-plugin-devtools-json": "^1.0.0"
 	},
 	"dependencies": {
+		"@threlte/core": "^8.4.1",
+		"@threlte/extras": "^9.8.1",
+		"@threlte/theatre": "^3.1.2",
+		"@types/three": "^0.183.1",
 		"mode-watcher": "^1.1.0",
-		"simple-icons": "^16.8.0"
+		"simple-icons": "^16.8.0",
+		"three": "^0.183.2"
 	}
 }

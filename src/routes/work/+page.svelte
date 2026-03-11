@@ -4,6 +4,8 @@
 	import { cubicOut } from 'svelte/easing';
 	import * as Card from '$lib/components/ui/card';
 	import { Badge } from '$lib/components/ui/badge';
+	import { Canvas } from '@threlte/core';
+	import Work3DScene from '$lib/components/three/Work3DScene.svelte';
 
 	let mounted = $state(false);
 
@@ -55,7 +57,14 @@
 	});
 </script>
 
-<div class="bg-background px-4 py-12 font-['Inter'] md:px-8 lg:px-12">
+<!-- 3D Canvas backdrop -->
+<div class="pointer-events-none fixed inset-0 -z-10">
+	<Canvas>
+		<Work3DScene />
+	</Canvas>
+</div>
+
+<div class="bg-background/70 px-4 py-12 font-['Inter'] backdrop-blur-[2px] md:px-8 lg:px-12">
 	<div class="mx-auto mb-20 max-w-5xl">
 		{#if mounted}
 			<div class="mb-16 text-center" in:fade={{ duration: 800, easing: cubicOut }}>

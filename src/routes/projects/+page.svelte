@@ -5,7 +5,15 @@
 	import * as Card from '$lib/components/ui/card';
 	import { Button } from '$lib/components/ui/button';
 	import { Badge } from '$lib/components/ui/badge';
-	import inretro from '$lib/assets/projects/inretro.webp';
+	import * as Carousel from '$lib/components/ui/carousel';
+	import { Canvas } from '@threlte/core';
+	import Projects3DScene from '$lib/components/three/Projects3DScene.svelte';
+
+	import * as roastmeImages from '$lib/assets/projects/roastme/index';
+	import * as confessbayImages from '$lib/assets/projects/confessbay/index';
+	import * as storeitImages from '$lib/assets/projects/store-it/index';
+	import * as inretroImages from '$lib/assets/projects/inretro/index';
+	import * as vaultsyImages from '$lib/assets/projects/vaultsy/index';
 
 	let mounted = $state(false);
 
@@ -15,7 +23,14 @@
 			name: 'Roast Me',
 			description:
 				'An AI-powered roasting app that delivers hilarious, personalized insults based on user input.',
-			image: 'https://via.placeholder.com/400x300/FF3E00/fff?text=Roast+Me',
+			images: [
+				roastmeImages.image1,
+				roastmeImages.image2,
+				roastmeImages.image3,
+				roastmeImages.image4,
+				roastmeImages.image5,
+				roastmeImages.image6
+			],
 			tech: ['Svelte', 'TypeScript', 'Tailwind CSS', 'Drizzle', 'PostgreSQL', 'Google AI'],
 			link: 'https://roast-me-kit.vercel.app',
 			github: 'https://github.com/ayushkumar48/roast-me'
@@ -24,7 +39,14 @@
 			id: 'confessbay-app',
 			name: 'ConfessBay App',
 			description: 'A mobile app for anonymous confessions, built with modern web technologies.',
-			image: 'https://via.placeholder.com/400x300/3178C6/fff?text=ConfessBay+App',
+			images: [
+				confessbayImages.image1,
+				confessbayImages.image2,
+				confessbayImages.image3,
+				confessbayImages.image4,
+				confessbayImages.image5,
+				confessbayImages.image6
+			],
 			tech: ['React Native', 'Expo', 'Tamagui', 'TypeScript', 'TanStack Query'],
 			link: null,
 			github: 'https://github.com/ayushkumar48/confessbay-app'
@@ -33,7 +55,14 @@
 			id: 'confessbay',
 			name: 'ConfessBay',
 			description: 'Web platform for sharing anonymous confessions with a sleek Svelte interface.',
-			image: 'https://via.placeholder.com/400x300/FF3E00/fff?text=ConfessBay',
+			images: [
+				confessbayImages.image1,
+				confessbayImages.image2,
+				confessbayImages.image3,
+				confessbayImages.image4,
+				confessbayImages.image5,
+				confessbayImages.image6
+			],
 			tech: [
 				'Svelte',
 				'TypeScript',
@@ -51,7 +80,7 @@
 			name: 'Store It',
 			description:
 				'A full-stack cloud storage solution with mobile app and backend API for managing files securely and efficiently.',
-			image: 'https://via.placeholder.com/400x300/3178C6/fff?text=Store+It',
+			images: [storeitImages.image1, storeitImages.image2],
 			tech: [
 				'React Native',
 				'Expo',
@@ -70,10 +99,35 @@
 			id: 'inRetro',
 			name: 'InRetro',
 			description: 'A retro-style social media platform with nostalgic UI and modern features.',
-			image: inretro,
+			images: [inretroImages.image1, inretroImages.image2, inretroImages.image3],
 			tech: ['Svelte', 'TypeScript', 'Tailwind CSS', 'Drizzle', 'PostgreSQL', 'Azure', 'Google AI'],
 			link: 'https://inretro.vercel.app',
 			github: 'https://github.com/ayushkumar48/inRetro'
+		},
+		{
+			id: 'vaultsy',
+			name: 'Vaultsy',
+			description:
+				'A developer-first secrets and environment variable manager. Organize, version, and sync your .env configs securely across all environments — with a clean dashboard and a powerful CLI.',
+			images: [
+				vaultsyImages.image1,
+				vaultsyImages.image2,
+				vaultsyImages.image3,
+				vaultsyImages.image4,
+				vaultsyImages.image5
+			],
+			tech: [
+				'Svelte',
+				'TypeScript',
+				'Tailwind CSS',
+				'Drizzle',
+				'PostgreSQL',
+				'Better Auth',
+				'Vercel',
+				'Bun'
+			],
+			link: 'https://vaultsy.vercel.app',
+			github: 'https://github.com/Ayushkumar48/vaultsy'
 		}
 	];
 
@@ -82,7 +136,16 @@
 	});
 </script>
 
-<div class="overflow-x-hidden bg-background px-4 py-12 font-['Inter'] md:px-8 lg:px-12">
+<!-- 3D Canvas backdrop -->
+<div class="pointer-events-none fixed inset-0 -z-10">
+	<Canvas>
+		<Projects3DScene />
+	</Canvas>
+</div>
+
+<div
+	class="overflow-x-hidden bg-background/70 px-4 py-12 font-['Inter'] backdrop-blur-[2px] md:px-8 lg:px-12"
+>
 	<div class="mx-auto mb-20 max-w-7xl">
 		{#if mounted}
 			<div class="relative mb-20" in:fade={{ duration: 800, easing: cubicOut }}>
@@ -125,11 +188,27 @@
 							></div>
 
 							<div class="overflow-hidden">
-								<img
-									src={project.image}
-									alt={project.name}
-									class="h-48 w-full object-cover transition-transform duration-500 group-hover:scale-105"
-								/>
+								<Carousel.Root class="w-full">
+									<Carousel.Content>
+										{#each project.images as image, j (j)}
+											<Carousel.Item>
+												<img
+													src={image}
+													alt="{project.name} screenshot {j + 1}"
+													class="h-48 w-full object-cover"
+												/>
+											</Carousel.Item>
+										{/each}
+									</Carousel.Content>
+									{#if project.images.length > 1}
+										<Carousel.Previous
+											class="left-2 h-7 w-7 opacity-0 transition-opacity duration-200 group-hover:opacity-100"
+										/>
+										<Carousel.Next
+											class="right-2 h-7 w-7 opacity-0 transition-opacity duration-200 group-hover:opacity-100"
+										/>
+									{/if}
+								</Carousel.Root>
 							</div>
 
 							<Card.Header>

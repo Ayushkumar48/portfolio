@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { Canvas } from '@threlte/core';
+	import Skills3DScene from '$lib/components/three/Skills3DScene.svelte';
 	import { onMount } from 'svelte';
 	import { fade, fly, scale } from 'svelte/transition';
 	import { cubicOut, elasticOut } from 'svelte/easing';
@@ -148,7 +150,16 @@
 	});
 </script>
 
-<div class="overflow-x-hidden bg-background px-4 py-12 font-['Inter'] md:px-8 lg:px-12">
+<!-- 3D Canvas backdrop -->
+<div class="pointer-events-none fixed inset-0 -z-10">
+	<Canvas>
+		<Skills3DScene />
+	</Canvas>
+</div>
+
+<div
+	class="overflow-x-hidden bg-background/70 px-4 py-12 font-['Inter'] backdrop-blur-[2px] md:px-8 lg:px-12"
+>
 	<div class="mx-auto mb-20 max-w-7xl">
 		{#if mounted}
 			<div class="relative mb-20" in:fade={{ duration: 800, easing: cubicOut }}>
