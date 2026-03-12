@@ -3,7 +3,7 @@
 	import BriefcaseIcon from '@lucide/svelte/icons/briefcase';
 	import SparklesIcon from '@lucide/svelte/icons/sparkles';
 	import CodeIcon from '@lucide/svelte/icons/code';
-	import MailIcon from '@lucide/svelte/icons/mail';
+	import Share2Icon from '@lucide/svelte/icons/share-2';
 	import { cn } from '$lib/utils';
 	import { Button } from './ui/button';
 	import { page } from '$app/state';
@@ -35,9 +35,9 @@
 			class: 'bg-secondary text-secondary-foreground'
 		},
 		{
-			name: 'Contact',
-			href: '/contact',
-			icon: MailIcon,
+			name: 'Social',
+			href: '/social',
+			icon: Share2Icon,
 			class: 'bg-popover text-popover-foreground'
 		}
 	];

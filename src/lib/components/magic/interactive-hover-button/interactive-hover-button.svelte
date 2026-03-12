@@ -39,7 +39,7 @@
 		}
 	}}
 >
-	<div class="flex items-center gap-2">
+	<div class="flex items-center justify-center gap-2">
 		<div
 			class="h-2 w-2 rounded-full bg-primary transition-all duration-300 group-hover/btn:scale-[100.8]"
 		></div>
