@@ -3,13 +3,19 @@
 	import { fade, fly } from 'svelte/transition';
 	import { cubicOut } from 'svelte/easing';
 	import * as Card from '$lib/components/ui/card';
+	import MagicCard from '$lib/components/magic/magic-card/magic-card.svelte';
 	import { Badge } from '$lib/components/ui/badge';
-	import { AnimatedBeam } from '$lib/components/magic/animated-beam';
-
-	let containerRef = $state<HTMLDivElement | null>(null);
-	let circleRefs = $state<(HTMLDivElement | null)[]>([]);
+	import { mode } from 'mode-watcher';
 
 	let mounted = $state(false);
+
+	const gradientColors: Record<string, { from: string; to: string }> = {
+		'bg-chart-1': { from: '#a3e635', to: '#4ade80' },
+		'bg-chart-2': { from: '#34d399', to: '#06b6d4' },
+		'bg-chart-3': { from: '#60a5fa', to: '#818cf8' }
+	};
+
+	let isDark = $derived(mode.current === 'dark');
 
 	const experiences = [
 		{
@@ -74,26 +80,7 @@
 			</div>
 		{/if}
 
-		<div class="relative" bind:this={containerRef}>
-			<AnimatedBeam
-				{containerRef}
-				fromRef={circleRefs[0]}
-				toRef={circleRefs[1]}
-				curvature={-50}
-				duration={3}
-			/>
-			<AnimatedBeam
-				{containerRef}
-				fromRef={circleRefs[1]}
-				toRef={circleRefs[2]}
-				curvature={-50}
-				duration={3}
-			/>
-
-			<div
-				class="absolute top-0 left-8 hidden h-full w-0.5 bg-linear-to-b from-chart-1 via-chart-2 to-chart-3 md:block"
-			></div>
-
+		<div class="relative">
 			<div class="space-y-12">
 				{#each experiences as exp, index (exp.period)}
 					{#if mounted}
@@ -103,7 +90,6 @@
 						>
 							<div class="mb-4 flex items-start md:mb-0">
 								<div
-									bind:this={circleRefs[index]}
 									class="relative z-10 flex h-16 w-16 shrink-0 items-center justify-center rounded-full border-4 border-background {exp.color} shadow-lg"
 								>
 									<span class="text-2xl font-bold text-white">{index + 1}</span>
@@ -111,52 +97,63 @@
 							</div>
 
 							<div class="group flex-1">
-								<Card.Root class="transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl">
-									<Card.Header>
-										<div class="flex flex-col justify-between gap-2 md:flex-row md:items-start">
-											<div>
-												<Card.Title class="text-2xl md:text-3xl">{exp.company}</Card.Title>
-												<Card.Description class="text-lg md:text-xl">{exp.role}</Card.Description>
+								<Card.Root
+									class="border-none p-0 shadow-none transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl"
+								>
+									<MagicCard
+										gradientColor={isDark ? '#4a4a4a' : '#D9D9D9'}
+										gradientFrom={gradientColors[exp.color].from}
+										gradientTo={gradientColors[exp.color].to}
+										gradientSize={350}
+										gradientOpacity={isDark ? 0.6 : 0.08}
+										class="rounded-xl"
+									>
+										<Card.Header class="border-b border-border p-6">
+											<div class="flex flex-col justify-between gap-2 md:flex-row md:items-start">
+												<div>
+													<Card.Title class="text-2xl md:text-3xl">{exp.company}</Card.Title>
+													<Card.Description class="text-lg md:text-xl">{exp.role}</Card.Description>
+												</div>
+												<Badge variant="secondary" class="w-fit text-base">
+													{exp.period}
+												</Badge>
 											</div>
-											<Badge variant="secondary" class="w-fit text-base">
-												{exp.period}
-											</Badge>
-										</div>
-									</Card.Header>
+										</Card.Header>
 
-									<Card.Content>
-										<p class="mb-4 text-muted-foreground">
-											{exp.description}
-										</p>
+										<Card.Content class="p-6">
+											<p class="mb-4 text-muted-foreground">
+												{exp.description}
+											</p>
 
-										<div class="space-y-3">
-											<h4 class="text-sm font-semibold tracking-wide uppercase">
-												Key Achievements
-											</h4>
-											<ul class="space-y-2">
-												{#each exp.highlights as highlight (highlight)}
-													<li class="flex items-start gap-3">
-														<span class="mt-1 shrink-0">
-															<svg
-																class="h-5 w-5 {exp.color.replace('bg-', 'text-')}"
-																fill="currentColor"
-																viewBox="0 0 20 20"
-															>
-																<path
-																	fill-rule="evenodd"
-																	d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-																	clip-rule="evenodd"
-																/>
-															</svg>
-														</span>
-														<span class="text-sm leading-relaxed md:text-base">
-															{highlight}
-														</span>
-													</li>
-												{/each}
-											</ul>
-										</div>
-									</Card.Content>
+											<div class="space-y-3">
+												<h4 class="text-sm font-semibold tracking-wide uppercase">
+													Key Achievements
+												</h4>
+												<ul class="space-y-2">
+													{#each exp.highlights as highlight (highlight)}
+														<li class="flex items-start gap-3">
+															<span class="mt-1 shrink-0">
+																<svg
+																	class="h-5 w-5 {exp.color.replace('bg-', 'text-')}"
+																	fill="currentColor"
+																	viewBox="0 0 20 20"
+																>
+																	<path
+																		fill-rule="evenodd"
+																		d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+																		clip-rule="evenodd"
+																	/>
+																</svg>
+															</span>
+															<span class="text-sm leading-relaxed md:text-base">
+																{highlight}
+															</span>
+														</li>
+													{/each}
+												</ul>
+											</div>
+										</Card.Content>
+									</MagicCard>
 								</Card.Root>
 							</div>
 						</div>

@@ -4,11 +4,11 @@
 	import SparklesIcon from '@lucide/svelte/icons/sparkles';
 	import CodeIcon from '@lucide/svelte/icons/code';
 	import MailIcon from '@lucide/svelte/icons/mail';
-	import DarkModeToggler from './dark-mode-toggler.svelte';
 	import { cn } from '$lib/utils';
 	import { Button } from './ui/button';
 	import { page } from '$app/state';
 	import { resolve } from '$app/paths';
+	import AnimatedThemeToggler from './magic/animated-theme-toggler/animated-theme-toggler.svelte';
 	const tabsData = [
 		{
 			name: 'Home',
@@ -65,6 +65,6 @@
 				</Button>
 			{/each}
 		</div>
-		<DarkModeToggler />
+		<AnimatedThemeToggler />
 	</div>
 </div>

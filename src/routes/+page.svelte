@@ -1,15 +1,17 @@
 <script lang="ts">
 	import LineShadowText from '$lib/components/magic/line-shadow-text/line-shadow-text.svelte';
+	import LightRays from '$lib/components/magic/light-rays/light-rays.svelte';
 </script>
 
 <div class="relative min-h-screen w-screen overflow-hidden">
+	<LightRays count={5} blur={40} />
 	<!-- Page content -->
 	<div class="flex min-h-screen w-screen flex-col items-center px-10 py-8">
 		<div
 			class="flex w-full max-w-4xl flex-col gap-10 rounded-2xl bg-accent/80 px-2 py-4 text-accent-foreground backdrop-blur-sm"
 		>
 			<h2 class="text-center text-5xl font-extrabold md:text-7xl lg:text-9xl">
-				LATENCY <LineShadowText content="SLAYER" shadowColor="var(--primary)" as="span" />
+				LATENCY <LineShadowText content="SLAYER" shadowColor="var(--primary-foreground)" />
 			</h2>
 
 			<div>
@@ -27,7 +29,7 @@
 			</div>
 		</div>
 		<div
-			class="mt-10 w-full max-w-4xl rounded-2xl bg-card/85 px-8 py-6 text-card-foreground shadow-lg backdrop-blur-sm"
+			class="mt-10 w-full max-w-4xl rounded-2xl border border-border bg-card/85 px-8 py-6 text-card-foreground shadow-lg backdrop-blur-sm"
 		>
 			<h3 class="text-3xl font-bold">About Me</h3>
 			<p class="mt-4 leading-relaxed text-muted-foreground">
