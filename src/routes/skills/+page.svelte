@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { Canvas } from '@threlte/core';
-	import Skills3DScene from '$lib/components/three/Skills3DScene.svelte';
 	import { onMount } from 'svelte';
+	import FlickeringGrid from '$lib/components/magic/flickering-grid/flickering-grid.svelte';
+	import { BorderBeam } from '$lib/components/magic/border-beam';
 	import { fade, fly, scale } from 'svelte/transition';
 	import { cubicOut, elasticOut } from 'svelte/easing';
 	import { Tween } from 'svelte/motion';
@@ -150,41 +150,29 @@
 	});
 </script>
 
-<!-- 3D Canvas backdrop -->
-<div class="pointer-events-none fixed inset-0 -z-10">
-	<Canvas>
-		<Skills3DScene />
-	</Canvas>
+<div class="fixed inset-0 -z-10 h-full w-full">
+	<FlickeringGrid
+		squareSize={4}
+		gridGap={8}
+		flickerChance={0.6}
+		color="var(--secondary)"
+		maxOpacity={0.4}
+	/>
 </div>
 
-<div
-	class="overflow-x-hidden bg-background/70 px-4 py-12 font-['Inter'] backdrop-blur-[2px] md:px-8 lg:px-12"
->
+<div class="overflow-x-hidden bg-background/30 px-4 py-12 font-['Inter'] md:px-8 lg:px-12">
 	<div class="mx-auto mb-20 max-w-7xl">
 		{#if mounted}
-			<div class="relative mb-20" in:fade={{ duration: 800, easing: cubicOut }}>
-				<div class="text-center">
-					<h1
-						class="mb-6 bg-linear-to-r from-primary via-chart-1 to-chart-4 bg-clip-text font-['Anton'] text-6xl text-transparent md:text-7xl lg:text-8xl"
-					>
-						TECH STACK
-					</h1>
-					<p class="mx-auto max-w-2xl font-['Anton'] text-lg text-muted-foreground md:text-xl">
-						A comprehensive toolkit for building high-performance, scalable applications that handle
-						real-world complexity
-					</p>
-				</div>
-
-				<div class="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-					<div
-						class="absolute -top-20 -right-20 h-72 w-72 rounded-full bg-chart-1/20 blur-3xl"
-						in:scale={{ duration: 1000, start: 0.5, easing: elasticOut }}
-					></div>
-					<div
-						class="absolute top-40 -left-20 h-96 w-96 rounded-full bg-chart-2/20 blur-3xl"
-						in:scale={{ duration: 1200, delay: 200, start: 0.5, easing: elasticOut }}
-					></div>
-				</div>
+			<div class="relative mb-20 text-center" in:fade={{ duration: 800, easing: cubicOut }}>
+				<h1
+					class="mb-6 bg-linear-to-r from-primary via-chart-1 to-chart-4 bg-clip-text font-['Anton'] text-6xl text-transparent md:text-7xl lg:text-8xl"
+				>
+					TECH STACK
+				</h1>
+				<p class="mx-auto max-w-2xl font-['Anton'] text-lg text-muted-foreground md:text-xl">
+					A comprehensive toolkit for building high-performance, scalable applications that handle
+					real-world complexity
+				</p>
 			</div>
 		{/if}
 
@@ -194,11 +182,28 @@
 				{#each featuredSkills as skill, i (skill.id)}
 					{#if mounted}
 						<div in:fly={{ y: 50, duration: 600, delay: i * 100, easing: cubicOut }} class="group">
-							<Card.Root class="transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl">
+							<Card.Root
+								class="relative overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl"
+							>
 								<div
 									class="absolute inset-0 -z-10 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
 									style="background: linear-gradient(135deg, transparent 0%, {skill.color}10 100%);"
 								></div>
+								<BorderBeam
+									duration={6}
+									size={120}
+									borderWidth={1.5}
+									colorFrom="transparent"
+									colorTo="var(--primary)"
+								/>
+								<BorderBeam
+									duration={6}
+									delay={3}
+									size={120}
+									borderWidth={1.5}
+									colorFrom="transparent"
+									colorTo="var(--chart-2)"
+								/>
 
 								<Card.Content class="flex items-center gap-4 p-6">
 									<div

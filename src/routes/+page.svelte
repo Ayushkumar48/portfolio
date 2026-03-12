@@ -1,22 +1,16 @@
 <script lang="ts">
-	import { Canvas } from '@threlte/core';
-	import Hero3DScene from '$lib/components/three/Hero3DScene.svelte';
+	import LineShadowText from '$lib/components/magic/line-shadow-text/line-shadow-text.svelte';
 </script>
 
 <div class="relative min-h-screen w-screen overflow-hidden">
-	<!-- 3D Canvas backdrop -->
-	<div class="pointer-events-none fixed inset-0 -z-10">
-		<Canvas>
-			<Hero3DScene />
-		</Canvas>
-	</div>
-
 	<!-- Page content -->
 	<div class="flex min-h-screen w-screen flex-col items-center px-10 py-8">
 		<div
 			class="flex w-full max-w-4xl flex-col gap-10 rounded-2xl bg-accent/80 px-2 py-4 text-accent-foreground backdrop-blur-sm"
 		>
-			<h2 class="text-center text-5xl font-extrabold md:text-7xl lg:text-9xl">LATENCY SLAYER</h2>
+			<h2 class="text-center text-5xl font-extrabold md:text-7xl lg:text-9xl">
+				LATENCY <LineShadowText content="SLAYER" shadowColor="var(--primary)" as="span" />
+			</h2>
 
 			<div>
 				<p class="w-2/5">

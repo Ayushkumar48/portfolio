@@ -4,8 +4,10 @@
 	import { cubicOut } from 'svelte/easing';
 	import * as Card from '$lib/components/ui/card';
 	import { Badge } from '$lib/components/ui/badge';
-	import { Canvas } from '@threlte/core';
-	import Work3DScene from '$lib/components/three/Work3DScene.svelte';
+	import { AnimatedBeam } from '$lib/components/magic/animated-beam';
+
+	let containerRef = $state<HTMLDivElement | null>(null);
+	let circleRefs = $state<(HTMLDivElement | null)[]>([]);
 
 	let mounted = $state(false);
 
@@ -57,14 +59,7 @@
 	});
 </script>
 
-<!-- 3D Canvas backdrop -->
-<div class="pointer-events-none fixed inset-0 -z-10">
-	<Canvas>
-		<Work3DScene />
-	</Canvas>
-</div>
-
-<div class="bg-background/70 px-4 py-12 font-['Inter'] backdrop-blur-[2px] md:px-8 lg:px-12">
+<div class="bg-background/30 px-4 py-12 font-['Inter'] md:px-8 lg:px-12">
 	<div class="mx-auto mb-20 max-w-5xl">
 		{#if mounted}
 			<div class="mb-16 text-center" in:fade={{ duration: 800, easing: cubicOut }}>
@@ -79,7 +74,22 @@
 			</div>
 		{/if}
 
-		<div class="relative">
+		<div class="relative" bind:this={containerRef}>
+			<AnimatedBeam
+				{containerRef}
+				fromRef={circleRefs[0]}
+				toRef={circleRefs[1]}
+				curvature={-50}
+				duration={3}
+			/>
+			<AnimatedBeam
+				{containerRef}
+				fromRef={circleRefs[1]}
+				toRef={circleRefs[2]}
+				curvature={-50}
+				duration={3}
+			/>
+
 			<div
 				class="absolute top-0 left-8 hidden h-full w-0.5 bg-linear-to-b from-chart-1 via-chart-2 to-chart-3 md:block"
 			></div>
@@ -93,6 +103,7 @@
 						>
 							<div class="mb-4 flex items-start md:mb-0">
 								<div
+									bind:this={circleRefs[index]}
 									class="relative z-10 flex h-16 w-16 shrink-0 items-center justify-center rounded-full border-4 border-background {exp.color} shadow-lg"
 								>
 									<span class="text-2xl font-bold text-white">{index + 1}</span>
