@@ -3,15 +3,17 @@
 	import LightRays from '$lib/components/magic/light-rays/light-rays.svelte';
 </script>
 
-<div class="relative min-h-screen w-full overflow-hidden py-18">
+<div class="relative min-h-screen w-full overflow-hidden py-16 pb-24! sm:py-14 md:py-10">
 	<LightRays count={5} blur={40} />
 	<div
-		class="flex min-h-screen w-full flex-col items-center justify-center px-4 py-8 sm:px-6 md:px-8 lg:px-10"
+		class="flex min-h-screen w-full flex-col items-center justify-center px-4 py-6 md:px-8 lg:px-10"
 	>
 		<div
 			class="flex w-full max-w-4xl flex-col gap-6 rounded-xl bg-accent/80 px-4 py-6 text-accent-foreground backdrop-blur-sm sm:gap-8 sm:rounded-2xl sm:px-6 sm:py-8 md:gap-10 md:px-8"
 		>
-			<h2 class="text-center text-5xl leading-tight font-extrabold sm:text-7xl xl:text-9xl">
+			<h2
+				class="text-center text-5xl leading-tight font-extrabold sm:text-7xl md:text-8xl xl:text-9xl"
+			>
 				LATENCY <LineShadowText content="SLAYER" shadowColor="var(--primary-foreground)" />
 			</h2>
 
