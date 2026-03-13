@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
 	import FlickeringGrid from '$lib/components/magic/flickering-grid/flickering-grid.svelte';
 	import { BorderBeam } from '$lib/components/magic/border-beam';
+	import MagicCard from '$lib/components/magic/magic-card/magic-card.svelte';
 	import { fade, fly, scale } from 'svelte/transition';
 	import { cubicOut, elasticOut } from 'svelte/easing';
 	import { Tween } from 'svelte/motion';
@@ -9,8 +10,17 @@
 	import * as Card from '$lib/components/ui/card';
 	import { Badge } from '$lib/components/ui/badge';
 	import { Progress } from '$lib/components/ui/progress';
+	import { mode } from 'mode-watcher';
 
 	let mounted = $state(false);
+	let isDark = $derived(mode.current === 'dark');
+
+	const gradientColors: Record<string, { from: string; to: string }> = {
+		'from-chart-1 via-chart-2 to-chart-3': { from: '#a3e635', to: '#6b7280' },
+		'from-chart-2 via-chart-4 to-chart-5': { from: '#34d399', to: '#6366f1' },
+		'from-chart-4 via-chart-1 to-primary': { from: '#60a5fa', to: '#a3e635' },
+		'from-chart-3 via-chart-2 to-chart-1': { from: '#f59e0b', to: '#a3e635' }
+	};
 
 	const featuredSkills = [
 		{ id: 'nodejs', name: 'Node.js', icon: 'nodedotjs', color: '#339933', proficiency: 95 },
@@ -191,18 +201,18 @@
 								></div>
 								<BorderBeam
 									duration={6}
-									size={120}
+									size={180}
 									borderWidth={1.5}
 									colorFrom="transparent"
-									colorTo="var(--primary)"
+									colorTo="var(--cyan)"
 								/>
 								<BorderBeam
 									duration={6}
 									delay={3}
-									size={120}
+									size={180}
 									borderWidth={1.5}
 									colorFrom="transparent"
-									colorTo="var(--chart-2)"
+									colorTo="var(--purple)"
 								/>
 
 								<Card.Content class="flex items-center gap-4 p-6">
@@ -233,7 +243,7 @@
 			</div>
 		</div>
 
-		<div class="mb-16 grid gap-6 md:grid-cols-2">
+		<div class="mb-16 grid gap-6 md:auto-rows-fr md:grid-cols-2">
 			{#each skillGroups as group, i (group.id)}
 				{#if mounted}
 					<div
@@ -243,43 +253,54 @@
 							delay: 200 + i * 150,
 							easing: cubicOut
 						}}
-						class="group relative overflow-hidden rounded-3xl bg-linear-to-br {group.gradient} p-0.5 transition-all duration-500 hover:shadow-2xl"
+						class="group h-full"
 					>
-						<Card.Root class="h-full bg-card/95 backdrop-blur-xl">
-							<Card.Header>
-								<Card.Title class="text-3xl font-black">{group.title}</Card.Title>
-								<Card.Description>{group.description}</Card.Description>
-								<div class="mt-3 h-1 w-16 rounded-full bg-linear-to-r {group.gradient}"></div>
-							</Card.Header>
+						<Card.Root
+							class="h-full border-none p-0 shadow-none transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl"
+						>
+							<MagicCard
+								gradientColor={isDark ? '#4a4a4a' : '#D9D9D9'}
+								gradientFrom={gradientColors[group.gradient].from}
+								gradientTo={gradientColors[group.gradient].to}
+								gradientSize={350}
+								gradientOpacity={isDark ? 0.6 : 0.08}
+								class="flex h-full flex-col rounded-xl"
+							>
+								<Card.Header class="border-b border-border p-6">
+									<Card.Title class="text-3xl font-black">{group.title}</Card.Title>
+									<Card.Description>{group.description}</Card.Description>
+									<div class="mt-3 h-1 w-16 rounded-full bg-linear-to-r {group.gradient}"></div>
+								</Card.Header>
 
-							<Card.Content>
-								<div class="flex flex-wrap gap-3">
-									{#each group.skills as skill, j (skill.id)}
-										<div
-											in:scale={{
-												duration: 400,
-												delay: 400 + i * 150 + j * 50,
-												start: 0.8,
-												easing: cubicOut
-											}}
-											class="group/skill"
-										>
-											<Badge
-												variant="secondary"
-												class="flex items-center gap-3 px-4 py-2.5 text-base transition-all duration-300 hover:scale-105 hover:bg-accent hover:text-accent-foreground hover:shadow-lg"
+								<Card.Content class="flex-1 p-6">
+									<div class="flex flex-wrap gap-3">
+										{#each group.skills as skill, j (skill.id)}
+											<div
+												in:scale={{
+													duration: 400,
+													delay: 400 + i * 150 + j * 50,
+													start: 0.8,
+													easing: cubicOut
+												}}
+												class="group/skill"
 											>
-												<SimpleIcon
-													name={skill.icon}
-													size="h-5 w-5"
-													color={skill.color}
-													class="transition-all duration-800 ease-in-out group-hover/skill:rotate-360 group-hover/skill:fill-black!"
-												/>
-												<span>{skill.name}</span>
-											</Badge>
-										</div>
-									{/each}
-								</div>
-							</Card.Content>
+												<Badge
+													variant="secondary"
+													class="flex items-center gap-3 px-4 py-2.5 text-base transition-all duration-300 hover:scale-105 hover:bg-accent hover:text-accent-foreground hover:shadow-lg"
+												>
+													<SimpleIcon
+														name={skill.icon}
+														size="h-5 w-5"
+														color={skill.color}
+														class="transition-all duration-800 ease-in-out group-hover/skill:rotate-360 group-hover/skill:fill-black!"
+													/>
+													<span>{skill.name}</span>
+												</Badge>
+											</div>
+										{/each}
+									</div>
+								</Card.Content>
+							</MagicCard>
 						</Card.Root>
 					</div>
 				{/if}
