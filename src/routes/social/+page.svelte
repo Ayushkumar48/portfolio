@@ -134,7 +134,12 @@
 										</Badge>
 									</div>
 
-									<InteractiveHoverButton href={social.url} target="_blank" class="mt-4 w-full">
+									<InteractiveHoverButton
+										href={social.url}
+										target="_blank"
+										class="mt-4 w-full"
+										useWindow
+									>
 										Visit
 									</InteractiveHoverButton>
 								</Card.Content>
@@ -165,7 +170,9 @@
 				<div class="flex flex-wrap justify-center gap-4">
 					<Button
 						size="lg"
-						onclick={() => window.open('https://linkedin.com/in/ayushkumar48', '_blank')}
+						href="https://linkedin.com/in/ayushkumar48"
+						target="_blank"
+						rel="noopener noreferrer"
 						class="cursor-pointer transition-all duration-300 hover:shadow-lg"
 					>
 						Let's Connect

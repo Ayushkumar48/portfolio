@@ -11,6 +11,7 @@
 		icon?: Snippet;
 		href?: string;
 		target?: string;
+		useWindow?: boolean;
 	}
 
 	let {
@@ -19,6 +20,7 @@
 		icon,
 		href,
 		target,
+		useWindow = false,
 		...props
 	}: InteractiveHoverButtonProps = $props();
 </script>
@@ -32,7 +34,7 @@
 	{...props}
 	onclick={() => {
 		if (!href) return;
-		if (target && target !== '_blank') {
+		if ((target && target !== '_blank') || useWindow) {
 			window.open(href, target);
 		} else {
 			goto(href);

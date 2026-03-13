@@ -209,14 +209,24 @@
 
 							<Card.Footer class="flex gap-3 pt-4">
 								{#if project.link}
-									<InteractiveHoverButton href={project.link} target="_blank" class="flex-1">
+									<InteractiveHoverButton
+										href={project.link}
+										target="_blank"
+										class="flex-1"
+										useWindow
+									>
 										View Demo
 										{#snippet icon()}
 											<ExternalLinkIcon class="h-4 w-4" />
 										{/snippet}
 									</InteractiveHoverButton>
 								{/if}
-								<InteractiveHoverButton href={project.github} target="_blank" class="flex-1">
+								<InteractiveHoverButton
+									href={project.github}
+									target="_blank"
+									class="flex-1"
+									useWindow
+								>
 									GitHub
 									{#snippet icon()}
 										<SimpleIcon name="github" size="h-4 w-4" />
