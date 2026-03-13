@@ -65,38 +65,45 @@
 	});
 </script>
 
-<div class="bg-background/30 px-4 py-12 font-['Inter'] md:px-8 lg:px-12">
-	<div class="mx-auto mb-20 max-w-5xl">
+<div
+	class="min-h-screen w-full bg-background/30 px-3 py-24 font-['Inter'] sm:px-4 md:px-8 md:py-12 lg:px-12"
+>
+	<div class="mx-auto mb-12 w-full max-w-5xl sm:mb-16 md:mb-20">
 		{#if mounted}
-			<div class="mb-16 text-center" in:fade={{ duration: 800, easing: cubicOut }}>
+			<div
+				class="mb-12 text-center sm:mb-14 md:mb-16"
+				in:fade={{ duration: 800, easing: cubicOut }}
+			>
 				<h1
-					class="mb-4 bg-linear-to-r from-primary via-chart-1 to-chart-4 bg-clip-text font-['Anton'] text-6xl text-transparent md:text-7xl lg:text-8xl"
+					class="mb-3 bg-linear-to-r from-primary via-chart-1 to-chart-4 bg-clip-text font-['Anton'] text-4xl text-transparent sm:text-5xl md:text-7xl lg:text-8xl"
 				>
 					WORK EXPERIENCE
 				</h1>
-				<p class="text-lg text-muted-foreground md:text-xl">
+				<p class="text-base text-muted-foreground sm:text-lg md:text-xl">
 					My journey through different companies and roles
 				</p>
 			</div>
 		{/if}
 
-		<div class="relative">
-			<div class="space-y-12">
+		<div class="relative w-full">
+			<div class="space-y-8 sm:space-y-10 md:space-y-12">
 				{#each experiences as exp, index (exp.period)}
 					{#if mounted}
 						<div
-							class="relative flex flex-col md:flex-row md:gap-8"
+							class="relative flex flex-col md:flex-row md:gap-6 lg:gap-8"
 							in:fly={{ y: 50, duration: 600, delay: index * 150, easing: cubicOut }}
 						>
-							<div class="mb-4 flex items-start md:mb-0">
+							<!-- Timeline Circle -->
+							<div class="mb-4 flex items-start md:mb-0 md:pt-1">
 								<div
-									class="relative z-10 flex h-16 w-16 shrink-0 items-center justify-center rounded-full border-4 border-background {exp.color} shadow-lg"
+									class="relative z-10 flex h-12 w-12 shrink-0 items-center justify-center rounded-full border-4 border-background {exp.color} shadow-lg sm:h-14 sm:w-14 md:h-16 md:w-16"
 								>
-									<span class="text-2xl font-bold text-white">{index + 1}</span>
+									<span class="text-xl font-bold text-white sm:text-2xl">{index + 1}</span>
 								</div>
 							</div>
 
-							<div class="group flex-1">
+							<!-- Content Card -->
+							<div class="group w-full flex-1">
 								<Card.Root
 									class="border-none p-0 shadow-none transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl"
 								>
@@ -108,33 +115,44 @@
 										gradientOpacity={isDark ? 0.6 : 0.08}
 										class="rounded-xl"
 									>
-										<Card.Header class="border-b border-border p-6">
-											<div class="flex flex-col justify-between gap-2 md:flex-row md:items-start">
-												<div>
-													<Card.Title class="text-2xl md:text-3xl">{exp.company}</Card.Title>
-													<Card.Description class="text-lg md:text-xl">{exp.role}</Card.Description>
+										<Card.Header class="border-b border-border p-4 sm:p-5 md:p-6">
+											<div
+												class="flex flex-col justify-between gap-3 sm:gap-4 md:flex-row md:items-start"
+											>
+												<div class="w-full md:w-auto">
+													<Card.Title class="text-lg sm:text-xl md:text-2xl lg:text-3xl"
+														>{exp.company}</Card.Title
+													>
+													<Card.Description class="text-sm sm:text-base md:text-lg lg:text-xl">
+														{exp.role}
+													</Card.Description>
 												</div>
-												<Badge variant="secondary" class="w-fit text-base">
+												<Badge
+													variant="secondary"
+													class="w-fit shrink-0 text-xs sm:text-sm md:text-base"
+												>
 													{exp.period}
 												</Badge>
 											</div>
 										</Card.Header>
 
-										<Card.Content class="p-6">
-											<p class="mb-4 text-muted-foreground">
+										<Card.Content class="p-4 sm:p-5 md:p-6">
+											<p class="mb-4 text-xs text-muted-foreground sm:text-sm md:text-base">
 												{exp.description}
 											</p>
 
-											<div class="space-y-3">
-												<h4 class="text-sm font-semibold tracking-wide uppercase">
+											<div class="space-y-3 md:space-y-4">
+												<h4
+													class="text-xs font-semibold tracking-wide uppercase sm:text-sm md:text-base"
+												>
 													Key Achievements
 												</h4>
-												<ul class="space-y-2">
+												<ul class="space-y-2 sm:space-y-3">
 													{#each exp.highlights as highlight (highlight)}
-														<li class="flex items-start gap-3">
-															<span class="mt-1 shrink-0">
+														<li class="flex items-start gap-2 sm:gap-3">
+															<span class="mt-0.5 shrink-0 sm:mt-1">
 																<svg
-																	class="h-5 w-5 {exp.color.replace('bg-', 'text-')}"
+																	class="h-4 w-4 sm:h-5 sm:w-5 {exp.color.replace('bg-', 'text-')}"
 																	fill="currentColor"
 																	viewBox="0 0 20 20"
 																>
@@ -145,7 +163,9 @@
 																	/>
 																</svg>
 															</span>
-															<span class="text-sm leading-relaxed md:text-base">
+															<span
+																class="text-xs leading-relaxed sm:text-sm md:text-base md:leading-relaxed"
+															>
 																{highlight}
 															</span>
 														</li>

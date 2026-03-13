@@ -170,30 +170,42 @@
 	/>
 </div>
 
-<div class="overflow-x-hidden bg-background/30 px-4 py-12 font-['Inter'] md:px-8 lg:px-12">
-	<div class="mx-auto mb-20 max-w-7xl">
+<div
+	class="w-full overflow-x-hidden bg-background/30 px-3 py-24 font-['Inter'] sm:px-4 md:px-6 md:py-12 lg:px-8 xl:px-12"
+>
+	<div class="mx-auto mb-12 w-full max-w-7xl sm:mb-16 md:mb-20">
 		{#if mounted}
-			<div class="relative mb-20 text-center" in:fade={{ duration: 800, easing: cubicOut }}>
+			<div
+				class="relative mb-10 text-center sm:mb-14 md:mb-20"
+				in:fade={{ duration: 800, easing: cubicOut }}
+			>
 				<h1
-					class="mb-6 bg-linear-to-r from-primary via-chart-1 to-chart-4 bg-clip-text font-['Anton'] text-6xl text-transparent md:text-7xl lg:text-8xl"
+					class="mb-3 bg-linear-to-r from-primary via-chart-1 to-chart-4 bg-clip-text font-['Anton'] text-3xl text-transparent sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl"
 				>
 					TECH STACK
 				</h1>
-				<p class="mx-auto max-w-2xl font-['Anton'] text-lg text-muted-foreground md:text-xl">
+				<p
+					class="mx-auto max-w-2xl px-2 font-['Anton'] text-xs text-muted-foreground sm:text-sm md:text-lg lg:text-xl"
+				>
 					A comprehensive toolkit for building high-performance, scalable applications that handle
 					real-world complexity
 				</p>
 			</div>
 		{/if}
 
-		<div class="mb-16">
-			<h2 class="mb-8 text-3xl font-black">Core Technologies</h2>
-			<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+		<div class="mb-12 sm:mb-14 md:mb-16">
+			<h2 class="mb-4 text-lg font-black sm:mb-5 md:mb-8 md:text-2xl lg:text-3xl">
+				Core Technologies
+			</h2>
+			<div class="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 md:gap-6 lg:grid-cols-3">
 				{#each featuredSkills as skill, i (skill.id)}
 					{#if mounted}
-						<div in:fly={{ y: 50, duration: 600, delay: i * 100, easing: cubicOut }} class="group">
+						<div
+							in:fly={{ y: 50, duration: 600, delay: i * 100, easing: cubicOut }}
+							class="group w-full"
+						>
 							<Card.Root
-								class="relative overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl"
+								class="relative overflow-hidden transition-all duration-500 hover:-translate-y-1 hover:shadow-lg sm:hover:-translate-y-2 sm:hover:shadow-2xl"
 							>
 								<div
 									class="absolute inset-0 -z-10 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
@@ -215,22 +227,28 @@
 									colorTo="var(--purple)"
 								/>
 
-								<Card.Content class="flex items-center gap-4 p-6">
+								<Card.Content
+									class="flex flex-col items-start gap-3 p-3 sm:flex-row sm:items-center sm:gap-4 sm:p-4 md:p-6"
+								>
 									<div
-										class="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6"
+										class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6 sm:h-14 sm:w-14 md:h-16 md:w-16 md:rounded-2xl"
 										style="background: linear-gradient(135deg, {skill.color}20 0%, {skill.color}05 100%);"
 									>
-										<SimpleIcon name={skill.icon} color={skill.color} size="h-10 w-10" />
+										<SimpleIcon
+											name={skill.icon}
+											color={skill.color}
+											size="h-7 w-7 sm:h-8 sm:w-8 md:h-10 md:w-10"
+										/>
 									</div>
 
-									<div class="flex-1">
-										<h3 class="mb-2 text-xl font-bold">{skill.name}</h3>
+									<div class="w-full flex-1">
+										<h3 class="mb-2 text-sm font-bold sm:text-base md:text-lg">{skill.name}</h3>
 										<div class="flex items-center gap-2">
 											<Progress
 												value={progressTweens[i].current}
-												class="flex-1 [&>div]:transition-none!"
+												class="h-1.5 flex-1 sm:h-2 [&>div]:transition-none!"
 											/>
-											<span class="text-sm font-semibold text-muted-foreground">
+											<span class="text-xs font-semibold text-muted-foreground sm:text-sm">
 												{Math.round(progressTweens[i].current)}%
 											</span>
 										</div>
@@ -243,7 +261,7 @@
 			</div>
 		</div>
 
-		<div class="mb-16 grid gap-6 md:auto-rows-fr md:grid-cols-2">
+		<div class="mb-12 grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 md:auto-rows-fr md:gap-6">
 			{#each skillGroups as group, i (group.id)}
 				{#if mounted}
 					<div
@@ -256,7 +274,7 @@
 						class="group h-full"
 					>
 						<Card.Root
-							class="h-full border-none p-0 shadow-none transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl"
+							class="h-full border-none p-0 shadow-none transition-all duration-300 hover:scale-[1.02] hover:shadow-xl sm:hover:shadow-2xl"
 						>
 							<MagicCard
 								gradientColor={isDark ? '#4a4a4a' : '#D9D9D9'}
@@ -264,16 +282,22 @@
 								gradientTo={gradientColors[group.gradient].to}
 								gradientSize={350}
 								gradientOpacity={isDark ? 0.6 : 0.08}
-								class="flex h-full flex-col rounded-xl"
+								class="flex h-full flex-col rounded-lg sm:rounded-xl"
 							>
-								<Card.Header class="border-b border-border p-6">
-									<Card.Title class="text-3xl font-black">{group.title}</Card.Title>
-									<Card.Description>{group.description}</Card.Description>
-									<div class="mt-3 h-1 w-16 rounded-full bg-linear-to-r {group.gradient}"></div>
+								<Card.Header class="border-b border-border p-3 sm:p-4 md:p-6">
+									<Card.Title class="text-lg font-black sm:text-xl md:text-2xl"
+										>{group.title}</Card.Title
+									>
+									<Card.Description class="text-xs sm:text-sm md:text-base"
+										>{group.description}</Card.Description
+									>
+									<div
+										class="mt-2 h-0.5 w-12 rounded-full bg-linear-to-r {group.gradient} sm:mt-3"
+									></div>
 								</Card.Header>
 
-								<Card.Content class="flex-1 p-6">
-									<div class="flex flex-wrap gap-3">
+								<Card.Content class="flex-1 p-3 sm:p-4 md:p-6">
+									<div class="flex flex-wrap gap-2">
 										{#each group.skills as skill, j (skill.id)}
 											<div
 												in:scale={{
@@ -286,11 +310,11 @@
 											>
 												<Badge
 													variant="secondary"
-													class="flex items-center gap-3 px-4 py-2.5 text-base transition-all duration-300 hover:scale-105 hover:bg-accent hover:text-accent-foreground hover:shadow-lg"
+													class="flex items-center gap-2 px-2.5 py-1.5 text-xs transition-all duration-300 hover:scale-105 hover:bg-accent hover:text-accent-foreground hover:shadow-lg sm:px-3 sm:py-2 sm:text-sm md:px-4 md:py-2.5 md:text-base"
 												>
 													<SimpleIcon
 														name={skill.icon}
-														size="h-5 w-5"
+														size="h-4 w-4 sm:h-4 sm:w-4 md:h-5 md:w-5"
 														color={skill.color}
 														class="transition-all duration-800 ease-in-out group-hover/skill:rotate-360 group-hover/skill:fill-black!"
 													/>
@@ -307,9 +331,11 @@
 			{/each}
 		</div>
 
-		<div class="mb-16">
-			<h2 class="mb-8 text-3xl font-black">Programming Languages</h2>
-			<div class="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
+		<div class="mb-12 sm:mb-14 md:mb-16">
+			<h2 class="mb-4 text-lg font-black sm:mb-5 md:mb-8 md:text-2xl lg:text-3xl">
+				Programming Languages
+			</h2>
+			<div class="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 md:gap-6 lg:grid-cols-5">
 				{#each languages as lang, i (lang.id)}
 					{#if mounted}
 						<div
@@ -317,16 +343,20 @@
 							class="group"
 						>
 							<Card.Root
-								class="text-center transition-all duration-500 hover:-translate-y-2 hover:shadow-xl"
+								class="text-center transition-all duration-500 hover:-translate-y-1 hover:shadow-lg sm:hover:-translate-y-2 sm:hover:shadow-xl"
 							>
-								<Card.Content class="p-6">
+								<Card.Content class="p-3 sm:p-4 md:p-6">
 									<div
-										class="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-2xl bg-accent/30 transition-all duration-500 group-hover:scale-110 group-hover:rotate-6"
+										class="mx-auto mb-3 flex h-14 w-14 items-center justify-center rounded-lg bg-accent/30 transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 sm:mb-4 sm:h-16 sm:w-16 md:h-20 md:w-20 md:rounded-2xl"
 									>
-										<SimpleIcon name={lang.icon} color={lang.color} size="h-12 w-12" />
+										<SimpleIcon
+											name={lang.icon}
+											color={lang.color}
+											size="h-7 w-7 sm:h-8 sm:w-8 md:h-12 md:w-12"
+										/>
 									</div>
-									<h3 class="mb-2 text-lg font-bold">{lang.name}</h3>
-									<p class="text-sm text-muted-foreground">
+									<h3 class="mb-1 text-xs font-bold sm:mb-2 sm:text-sm md:text-lg">{lang.name}</h3>
+									<p class="text-xs text-muted-foreground sm:text-xs md:text-sm">
 										{lang.years} year{lang.years > 1 ? 's' : ''}
 									</p>
 								</Card.Content>
@@ -337,8 +367,8 @@
 			</div>
 		</div>
 
-		<div class="mb-16">
-			<div class="grid gap-6 md:grid-cols-4">
+		<div class="mb-12 sm:mb-14">
+			<div class="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-4 md:gap-6">
 				{#if mounted}
 					{#each stats as stat, i (stat.id)}
 						<div
@@ -346,7 +376,7 @@
 							class="group"
 						>
 							<Card.Root
-								class="overflow-hidden bg-linear-to-br {stat.gradient} text-center transition-all duration-500 hover:scale-105"
+								class="overflow-hidden bg-linear-to-br {stat.gradient} h-full text-center transition-all duration-500 hover:scale-105"
 							>
 								<Card.Content class="p-8">
 									<div class="mb-2 text-5xl font-black {stat.color}">{stat.value}</div>

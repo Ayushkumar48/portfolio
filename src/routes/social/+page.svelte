@@ -83,23 +83,28 @@
 	});
 </script>
 
-<div class="bg-background/30 px-4 py-12 font-['Inter'] md:px-8 lg:px-12">
-	<div class="mx-auto mb-20 max-w-6xl">
+<div
+	class="w-full bg-background/30 px-3 py-24 font-['Inter'] sm:px-4 md:px-6 md:py-12 lg:px-8 xl:px-12"
+>
+	<div class="mx-auto mb-12 w-full max-w-6xl sm:mb-16 md:mb-20">
 		{#if mounted}
-			<div class="mb-16 text-center" in:fade={{ duration: 800, easing: cubicOut }}>
+			<div
+				class="mb-10 text-center sm:mb-12 md:mb-16"
+				in:fade={{ duration: 800, easing: cubicOut }}
+			>
 				<h1
-					class="mb-4 bg-linear-to-r from-primary via-chart-1 to-chart-4 bg-clip-text font-['Anton'] text-6xl text-transparent md:text-7xl lg:text-8xl"
+					class="mb-3 bg-linear-to-r from-primary via-chart-1 to-chart-4 bg-clip-text font-['Anton'] text-3xl text-transparent sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl"
 				>
 					CONNECT WITH ME
 				</h1>
-				<p class="text-lg text-muted-foreground md:text-xl">
+				<p class="px-2 text-xs text-muted-foreground sm:text-sm md:text-lg lg:text-xl">
 					Find me across platforms, share opportunities, or just say hello
 				</p>
 			</div>
 		{/if}
 
-		<div class="mb-20">
-			<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+		<div class="mb-12 sm:mb-14 md:mb-20">
+			<div class="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 md:gap-5 lg:grid-cols-3 lg:gap-6">
 				{#each socialLinks as social, index (social.name)}
 					{@const Icon = social.icon}
 					{#if mounted}
@@ -112,24 +117,28 @@
 							class="group h-full"
 						>
 							<Card.Root
-								class="relative cursor-pointer p-0 shadow-none transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl"
+								class="relative h-full cursor-pointer p-0 shadow-none transition-all duration-300 hover:scale-[1.02] hover:shadow-lg sm:hover:shadow-2xl"
 							>
 								<Card.Content
-									class="flex h-full flex-col items-center justify-center gap-4 p-8 text-center"
+									class="flex h-full flex-col items-center justify-center gap-2 p-4 text-center sm:gap-3 sm:p-6 md:gap-4 md:p-8"
 								>
 									<div
-										class="flex h-24 w-24 items-center justify-center rounded-2xl transition-all duration-500 group-hover:scale-110 group-hover:rotate-6"
+										class="flex h-16 w-16 items-center justify-center rounded-lg transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 sm:h-20 sm:w-20 md:h-24 md:w-24 md:rounded-2xl"
 										style="background: linear-gradient(135deg, {social.color}20 0%, {social.color}05 100%);"
 									>
-										<div class="h-14 w-14">
+										<div class="h-9 w-9 sm:h-11 sm:w-11 md:h-14 md:w-14">
 											<Icon />
 										</div>
 									</div>
 
-									<div>
-										<h3 class="mb-2 text-2xl font-bold">{social.name}</h3>
-										<p class="mb-3 text-sm text-muted-foreground">{social.description}</p>
-										<Badge variant="secondary" class="text-xs">
+									<div class="flex-1">
+										<h3 class="mb-1 text-base font-bold sm:mb-2 sm:text-lg md:text-2xl">
+											{social.name}
+										</h3>
+										<p class="mb-2 text-xs text-muted-foreground sm:mb-3 sm:text-xs md:text-sm">
+											{social.description}
+										</p>
+										<Badge variant="secondary" class="text-xs sm:text-xs md:text-sm">
 											{social.category}
 										</Badge>
 									</div>
@@ -137,7 +146,7 @@
 									<InteractiveHoverButton
 										href={social.url}
 										target="_blank"
-										class="mt-4 w-full"
+										class="mt-2 w-full text-xs sm:mt-3 sm:text-sm md:mt-4 md:text-base"
 										useWindow
 									>
 										Visit
@@ -153,7 +162,7 @@
 		{#if mounted}
 			<div
 				in:scale={{ duration: 700, delay: 800, start: 0.9, easing: cubicOut }}
-				class="relative overflow-hidden rounded-3xl bg-linear-to-r from-primary/20 via-chart-1/20 to-chart-4/20 p-12 text-center"
+				class="relative overflow-hidden rounded-2xl bg-linear-to-r from-primary/20 via-chart-1/20 to-chart-4/20 p-6 text-center sm:rounded-3xl sm:p-8 md:p-12"
 			>
 				<div class="absolute inset-0 -z-10 opacity-30">
 					<div
@@ -161,26 +170,28 @@
 					></div>
 				</div>
 
-				<h2 class="mb-4 text-3xl font-black md:text-4xl">Let's Build Something Amazing</h2>
-				<p class="mb-8 text-lg text-muted-foreground">
+				<h2 class="mb-3 text-xl font-black sm:mb-4 md:mb-4 md:text-3xl lg:text-4xl">
+					Let's Build Something Amazing
+				</h2>
+				<p class="mb-4 text-xs text-muted-foreground sm:mb-6 sm:text-sm md:mb-8 md:text-lg">
 					Interested in collaboration, opportunities, or just want to chat? Reach out on any
 					platform above!
 				</p>
 
-				<div class="flex flex-wrap justify-center gap-4">
+				<div class="flex flex-col gap-2 sm:flex-row sm:justify-center sm:gap-3 md:gap-4">
 					<Button
-						size="lg"
+						size="sm"
 						href="https://linkedin.com/in/ayushkumar48"
 						target="_blank"
 						rel="noopener noreferrer"
-						class="cursor-pointer transition-all duration-300 hover:shadow-lg"
+						class="w-full cursor-pointer text-xs transition-all duration-300 hover:shadow-lg sm:w-auto sm:text-sm md:text-base"
 					>
 						Let's Connect
 					</Button>
 					<Button
-						size="lg"
+						size="sm"
 						variant="outline"
-						class="transition-all duration-300 hover:shadow-lg"
+						class="w-full text-xs transition-all duration-300 hover:shadow-lg sm:w-auto sm:text-sm md:text-base"
 						href="mailto:ayushsuperstar48@gmail.com"
 					>
 						Send Email
