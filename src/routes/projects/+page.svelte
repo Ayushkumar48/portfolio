@@ -5,6 +5,8 @@
 	import * as Card from '$lib/components/ui/card';
 	import { Badge } from '$lib/components/ui/badge';
 	import ExternalLinkIcon from '@lucide/svelte/icons/external-link';
+	import ZoomIn from '@lucide/svelte/icons/zoom-in';
+	import X from '@lucide/svelte/icons/x';
 	import * as Carousel from '$lib/components/ui/carousel';
 
 	import * as roastmeImages from '$lib/assets/projects/roastme/index';
@@ -14,8 +16,9 @@
 	import * as vaultsyImages from '$lib/assets/projects/vaultsy/index';
 	import InteractiveHoverButton from '$lib/components/magic/interactive-hover-button/interactive-hover-button.svelte';
 	import SimpleIcon from '$lib/components/simple-icon.svelte';
-
+	import { Button } from '$lib/components/ui/button';
 	let mounted = $state(false);
+	let zoomedProject = $state<(typeof projects)[0] | null>(null);
 
 	const projects = [
 		{
@@ -180,11 +183,27 @@
 									<Carousel.Content>
 										{#each project.images as image, j (j)}
 											<Carousel.Item>
-												<img
-													src={image}
-													alt="{project.name} screenshot {j + 1}"
-													class="h-32 w-full object-cover sm:h-40 md:h-48"
-												/>
+												<button
+													type="button"
+													class="group/zoom relative h-32 w-full sm:h-40 md:h-48"
+													onclick={() => {
+														zoomedProject = project;
+													}}
+													aria-label="Zoom image"
+												>
+													<enhanced:img
+														src={image}
+														alt="{project.name} screenshot {j + 1}"
+														class="h-full w-full cursor-zoom-in object-cover"
+													/>
+													<div
+														class="absolute inset-0 flex items-center justify-center bg-black/0 transition-colors duration-200 group-hover/zoom:bg-black/20"
+													>
+														<ZoomIn
+															class="h-5 w-5 text-white opacity-0 transition-opacity duration-200 group-hover/zoom:opacity-100"
+														/>
+													</div>
+												</button>
 											</Carousel.Item>
 										{/each}
 									</Carousel.Content>
@@ -256,3 +275,44 @@
 		</div>
 	</div>
 </div>
+
+{#if zoomedProject}
+	<div
+		class="fixed inset-0 z-50"
+		role="dialog"
+		aria-modal="true"
+		transition:fly={{ y: -100, duration: 600, easing: cubicOut }}
+	>
+		<Button
+			onclick={() => (zoomedProject = null)}
+			variant="outline"
+			class="absolute top-4 right-4 z-10 text-white transition-colors hover:text-gray-300"
+			aria-label="Close zoom"
+			type="button"
+		>
+			<X class="h-8 w-8" />
+		</Button>
+
+		<div class="h-screen w-screen">
+			<Carousel.Root class="h-full w-full">
+				<Carousel.Content class="h-full">
+					{#each zoomedProject.images as image, j (j)}
+						<Carousel.Item class="h-full basis-full">
+							<div class="flex h-full w-full items-center justify-center">
+								<enhanced:img
+									src={image}
+									alt="{zoomedProject.name} screenshot {j + 1}"
+									class="h-full w-full object-contain"
+								/>
+							</div>
+						</Carousel.Item>
+					{/each}
+				</Carousel.Content>
+				{#if zoomedProject.images.length > 1}
+					<Carousel.Previous class="left-6 h-10 w-10 text-white hover:text-gray-300" />
+					<Carousel.Next class="right-6 h-10 w-10 text-white hover:text-gray-300" />
+				{/if}
+			</Carousel.Root>
+		</div>
+	</div>
+{/if}

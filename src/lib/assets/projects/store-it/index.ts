@@ -1,3 +1,3 @@
-import image1 from './1.png';
-import image2 from './2.png';
+import image1 from './1.webp?enhanced';
+import image2 from './2.webp?enhanced';
 export { image1, image2 };
