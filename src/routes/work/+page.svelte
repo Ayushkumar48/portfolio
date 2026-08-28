@@ -12,7 +12,8 @@
 	const gradientColors: Record<string, { from: string; to: string }> = {
 		'bg-chart-1': { from: '#a3e635', to: '#4ade80' },
 		'bg-chart-2': { from: '#34d399', to: '#06b6d4' },
-		'bg-chart-3': { from: '#60a5fa', to: '#818cf8' }
+		'bg-chart-3': { from: '#60a5fa', to: '#818cf8' },
+		'bg-chart-4': { from: '#f97316', to: '#ef4444' }
 	};
 
 	let isDark = $derived(mode.current === 'dark');
