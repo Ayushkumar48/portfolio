@@ -19,11 +19,25 @@
 
 	const experiences = [
 		{
+			company: 'BangDB',
+			role: 'Software Engineer',
+			period: 'Apr 2026 – Present',
+			description:
+				'Working on real-time applications, interactive dashboards, and scalable full-stack systems using modern web technologies.',
+			highlights: [
+				'Engineered a streaming AI response interface, incrementally rendering Markdown, charts, tables, and structured outputs in real time, reducing perceived latency and improving interactive user experience.',
+				'Architected a no-code dashboard builder from scratch, enabling drag-and-drop layouts, resizable widgets, multiple chart types, reusable dashboards, and support for diverse data sources.',
+				'Implemented real-time dashboard infrastructure featuring dynamic time ranges, configurable refresh intervals, live data streaming, dashboard sharing, snapshots, secure authentication, and embeddable dashboards for external applications.',
+				'Contributed to migrating backend API routes from Node.js to Go, supporting the transition toward a more performant, scalable, and efficient backend architecture.'
+			],
+			color: 'bg-chart-4'
+		},
+		{
 			company: 'ResponseNet',
 			role: 'Software Developer',
-			period: 'Jun 2025 – Present',
+			period: 'Jun 2025 – Mar 2026',
 			description:
-				'Building scalable backend services and real-time systems for production applications.',
+				'Build scalable backend services and real-time systems for production applications.',
 			highlights: [
 				'Collaborated and launched a UI using Next.js and shadcn/ui, improving usability and performance metrics by 20%+',
 				'Defined secure backend services with Express.js and Neon PostgreSQL, enabling efficient data querying and consistent session handling, resulting in faster load times by 15%',
